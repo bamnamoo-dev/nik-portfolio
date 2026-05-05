@@ -1,4 +1,5 @@
 import Image from "next/image";
+// Deployment trigger: Nik Portfolio
 
 export default function Home() {
   return (
