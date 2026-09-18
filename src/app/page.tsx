@@ -551,9 +551,6 @@ def optimize_school_admin(task):
           <span>EDUCATIONAL ADMINISTRATION & VIBE CODING</span>
         </div>
       </footer>
-      
-      {/* External Scripts for Icons */}
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
     </div>
   );
 }
