@@ -13,8 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nik | 21년 차 교육행정직 아빠의 기록",
-  description: "기술로 일상을 혁신하는 21년 경력 교육행정 전문가 Nik의 퍼스널 브랜드",
+  metadataBase: new URL("https://ssanta.net"),
+  title: "Nik | 교육행정 AI 업무혁신 · AI-SEN 운영",
+  description:
+    "교육행정직으로 일하며 AI 관련 행정업무 도구를 사용하고, 개발하고, 공유합니다. 도움이나 소통이 필요하시면 연락 주세요.",
+  openGraph: {
+    title: "Nik | 교육행정 AI 업무혁신 · AI-SEN 운영",
+    description:
+      "교육행정직으로 일하며 AI 관련 행정업무 도구를 사용하고, 개발하고, 공유합니다.",
+    url: "https://ssanta.net",
+    siteName: "Nik",
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -25,6 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>

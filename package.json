@@ -12,6 +12,7 @@
     "@types/nodemailer": "^8.0.0",
     "next": "latest",
     "nodemailer": "^8.0.7",
+    "qrcode-generator": "^2.0.4",
     "react": "latest",
     "react-dom": "latest"
   },
