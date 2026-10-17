@@ -34,7 +34,10 @@ export default function Home() {
           <div className="anim-glow absolute -bottom-40 -left-40 w-[520px] h-[520px] rounded-full bg-accent/15 blur-[120px]" aria-hidden="true"></div>
 
           <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 lg:items-stretch">
-            <div className="reveal flex flex-col">
+            <div className="reveal flex flex-col lg:justify-center">
+              <div className="hidden lg:block relative w-36 aspect-square rounded-[28px] overflow-hidden ring-1 ring-white/20 shadow-2xl anim-float mb-8">
+                <Image src="/images/brand-profile.png" alt="닉아저씨 마스코트" fill sizes="144px" className="object-cover" />
+              </div>
               <p className="text-sm font-bold text-accent mb-3">연락하기</p>
               <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
                 도움이나 소통이 필요하시면 편하게 연락 주세요
@@ -53,11 +56,6 @@ export default function Home() {
                 <span className="font-bold">{SITE.email}</span>
                 <span className="material-symbols-outlined !text-[18px] text-slate-400 transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span>
               </a>
-              <div className="hidden lg:flex flex-1 items-end pt-12">
-                <div className="relative w-72 aspect-square rounded-[32px] overflow-hidden ring-1 ring-white/20 shadow-2xl anim-float">
-                  <Image src="/images/brand-profile.png" alt="닉아저씨 마스코트" fill sizes="288px" className="object-cover" />
-                </div>
-              </div>
             </div>
 
             <div className="reveal text-[#16181d]">
