@@ -59,7 +59,7 @@ function BlogArt() {
 
 export default function Creative() {
   const cards = [
-    { href: SITE.youtubeUrl, art: <YoutubeArt />, icon: "play_arrow", tag: "YouTube", title: "닉아저씨", desc: "AI 활용과 일상을 영상으로 기록합니다." },
+    { href: SITE.youtubeUrl, art: <YoutubeArt />, icon: "play_arrow", tag: "YouTube", title: "On:ri", desc: "기술을 쓰는 아빠의 이야기를 영상으로 담습니다." },
     { href: SITE.blogUrl, art: <BlogArt />, icon: "edit_note", tag: "네이버 블로그", title: "Nik의 생각 창고", desc: "배움과 업무 이야기를 글로 남깁니다." },
   ];
 

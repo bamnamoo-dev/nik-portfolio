@@ -12,7 +12,7 @@ export const SITE = {
   tagline: "교육행정 AI 업무혁신 / AI-SEN 운영",
   portalUrl: "https://aisen.store",
   chatbotUrl: "https://chatbot.aisen.store",
-  youtubeUrl: "https://www.youtube.com/channel/UCkSLN2FO_OPPnaTAylapGTg",
+  youtubeUrl: "https://www.youtube.com/@onri",
   blogUrl: "https://blog.naver.com/u2i",
   disclaimerSite:
     "본 사이트와 도구는 개인이 개발·운영하는 비공식 프로젝트이며 서울특별시교육청 등 기관의 공식 사이트가 아닙니다.",
