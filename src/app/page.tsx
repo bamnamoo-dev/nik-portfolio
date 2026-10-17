@@ -33,8 +33,8 @@ export default function Home() {
           <div className="absolute inset-0 grid-bg" aria-hidden="true"></div>
           <div className="anim-glow absolute -bottom-40 -left-40 w-[520px] h-[520px] rounded-full bg-accent/15 blur-[120px]" aria-hidden="true"></div>
 
-          <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <div className="reveal">
+          <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 lg:items-stretch">
+            <div className="reveal flex flex-col">
               <p className="text-sm font-bold text-accent mb-3">연락하기</p>
               <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
                 도움이나 소통이 필요하시면 편하게 연락 주세요
@@ -45,7 +45,7 @@ export default function Home() {
               {/* TODO: 응답 시간 안내 문구가 정해지면 여기에 한 줄 추가하세요. (예: "보통 ○일 안에 답변드립니다") */}
               <a
                 href={`mailto:${SITE.email}`}
-                className="group inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 hover:bg-white/10 transition-colors"
+                className="group self-start inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 hover:bg-white/10 transition-colors"
               >
                 <span className="grid place-items-center w-10 h-10 rounded-xl bg-accent/15 text-accent">
                   <span className="material-symbols-outlined" aria-hidden="true">mail</span>
@@ -53,8 +53,10 @@ export default function Home() {
                 <span className="font-bold">{SITE.email}</span>
                 <span className="material-symbols-outlined !text-[18px] text-slate-400 transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span>
               </a>
-              <div className="hidden lg:block relative mt-12 w-44 aspect-square rounded-3xl overflow-hidden ring-1 ring-white/20 shadow-2xl anim-float">
-                <Image src="/images/brand-profile.png" alt="닉아저씨 마스코트" fill sizes="176px" className="object-cover" />
+              <div className="hidden lg:flex flex-1 items-end pt-12">
+                <div className="relative w-72 aspect-square rounded-[32px] overflow-hidden ring-1 ring-white/20 shadow-2xl anim-float">
+                  <Image src="/images/brand-profile.png" alt="닉아저씨 마스코트" fill sizes="288px" className="object-cover" />
+                </div>
               </div>
             </div>
 
