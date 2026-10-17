@@ -38,8 +38,8 @@ function BlogArt() {
       <svg viewBox="0 0 320 200" className="absolute inset-0 w-full h-full" aria-hidden="true">
         <g transform="rotate(-4 160 100)">
           <rect x="54" y="30" width="180" height="140" rx="12" fill="#fff" stroke="#0a1628" strokeOpacity=".08" />
-          <rect x="54" y="30" width="180" height="26" rx="12" fill="#03c75a" />
-          <rect x="54" y="44" width="180" height="12" fill="#03c75a" />
+          <rect x="54" y="30" width="180" height="26" rx="12" fill="#0e7490" />
+          <rect x="54" y="44" width="180" height="12" fill="#0e7490" />
           <text x="70" y="48" fontSize="12" fontWeight="800" fill="#fff" fontFamily="sans-serif">blog</text>
           {[0, 1, 2, 3, 4].map((i) => (
             <rect key={i} x="70" y={72 + i * 18} width={i === 4 ? 80 : 148 - (i % 2) * 24} height="6" rx="3" fill="#0a1628" fillOpacity={i === 0 ? 0.55 : 0.12} />
@@ -51,7 +51,7 @@ function BlogArt() {
           <path d="M236 164 L243 184 L250 164 Z" fill="#c7a250" />
         </g>
         <circle cx="270" cy="40" r="16" fill="#22d3ee" fillOpacity=".25" />
-        <circle cx="40" cy="168" r="10" fill="#03c75a" fillOpacity=".25" />
+        <circle cx="40" cy="168" r="10" fill="#0e7490" fillOpacity=".25" />
       </svg>
     </div>
   );
@@ -59,8 +59,8 @@ function BlogArt() {
 
 export default function Creative() {
   const cards = [
-    { href: SITE.youtubeUrl, art: <YoutubeArt />, icon: "play_arrow", tag: "YouTube", title: "On:ri", desc: "기술을 쓰는 아빠의 이야기를 영상으로 담습니다." },
-    { href: SITE.blogUrl, art: <BlogArt />, icon: "edit_note", tag: "네이버 블로그", title: "Nik의 생각 창고", desc: "배움과 업무 이야기를 글로 남깁니다." },
+    { href: SITE.youtubeUrl, art: <YoutubeArt />, icon: "play_arrow", tag: "YouTube", title: "닉아저씨", desc: "기술을 쓰는 아빠의 이야기를 영상으로 담습니다." },
+    { href: SITE.blogUrl, art: <BlogArt />, icon: "edit_note", tag: "블로그", title: "Nik의 생각 창고", desc: "배움과 업무 이야기를 글로 남깁니다." },
   ];
 
   return (
