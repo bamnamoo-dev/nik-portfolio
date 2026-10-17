@@ -48,12 +48,12 @@ export default function Home() {
               {/* TODO: 응답 시간 안내 문구가 정해지면 여기에 한 줄 추가하세요. (예: "보통 ○일 안에 답변드립니다") */}
               <a
                 href={`mailto:${SITE.email}`}
-                className="group self-start inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 hover:bg-white/10 transition-colors"
+                className="group self-start inline-flex lg:w-72 items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 hover:bg-white/10 transition-colors"
               >
                 <span className="grid place-items-center w-10 h-10 rounded-xl bg-accent/15 text-accent">
                   <span className="material-symbols-outlined" aria-hidden="true">mail</span>
                 </span>
-                <span className="font-bold">{SITE.email}</span>
+                <span className="font-bold lg:flex-1">{SITE.email}</span>
                 <span className="material-symbols-outlined !text-[18px] text-slate-400 transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span>
               </a>
             </div>

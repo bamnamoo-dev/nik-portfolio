@@ -43,9 +43,14 @@ export async function sendEmail(formData: FormData) {
     return { success: false, error: "문의 유형을 선택해주세요." };
   }
 
-  // Naver SMTP: host smtp.naver.com, port 465 (SSL) or 587 (TLS)
+  if (!process.env.NAVER_USER || !process.env.NAVER_PASS) {
+    console.error("메일 설정 누락: NAVER_USER 또는 NAVER_PASS 환경변수가 비어 있습니다.");
+    return { success: false, error: "메시지 발송에 실패했습니다. 잠시 후 다시 시도해주세요." };
+  }
+
+  // Naver SMTP: smtp.naver.com 465(SSL). `service: "naver"`는 쓰지 않습니다 —
+  // nodemailer 사전 설정(587)이 아래 port/secure 값을 덮어써서 TLS 연결이 실패합니다.
   const transporter = nodemailer.createTransport({
-    service: "naver",
     host: "smtp.naver.com",
     port: 465,
     secure: true,
