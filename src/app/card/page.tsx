@@ -24,7 +24,7 @@ export default function CardPage() {
         <header className="relative bg-gradient-to-br from-ink-2 to-ink text-white p-6 pb-7">
           <div className="flex items-center gap-4">
             <div className="relative w-16 h-16 rounded-2xl overflow-hidden ring-2 ring-white/20 shrink-0">
-              <Image src="/images/nik-desk.webp" alt="Nik 마스코트" fill sizes="64px" className="object-cover" priority />
+              <Image src="/images/brand-profile.png" alt="닉아저씨 마스코트" fill sizes="64px" className="object-cover" priority />
             </div>
             <div>
               <p className="text-xs font-semibold text-slate-400">{SITE.affiliation} · {SITE.role}</p>

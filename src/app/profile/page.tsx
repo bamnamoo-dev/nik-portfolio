@@ -39,7 +39,7 @@ export default function ProfilePage() {
       <article className="sheet bg-white mx-auto shadow-lg w-full max-w-[210mm] min-h-[297mm] p-[12mm] text-[#1a1c1c] text-[10.5pt] leading-relaxed">
         <header className="flex items-center gap-5 mb-7">
           <div className="relative w-20 h-20 rounded-xl overflow-hidden border border-black/10 shrink-0">
-            <Image src="/images/nik-desk.webp" alt="Nik 마스코트" fill sizes="80px" className="object-cover" />
+            <Image src="/images/brand-profile.png" alt="닉아저씨 마스코트" fill sizes="80px" className="object-cover" />
           </div>
           <div>
             <p className="text-[9.5pt] font-semibold text-[#44474e] mb-1">{SITE.affiliation} · {SITE.role}</p>

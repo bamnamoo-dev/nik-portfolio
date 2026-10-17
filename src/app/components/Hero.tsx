@@ -74,8 +74,8 @@ export default function Hero() {
             <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-br from-accent/40 to-sky-600/10 blur-2xl" aria-hidden="true"></div>
             <div className="relative aspect-square rounded-[36px] overflow-hidden ring-1 ring-white/20 shadow-2xl">
               <Image
-                src="/images/nik-desk.webp"
-                alt="노트북과 태블릿을 들고 있는 Nik 마스코트"
+                src="/images/brand-profile.png"
+                alt="안경을 쓰고 목걸이 명찰을 한 곰 캐릭터, 닉아저씨"
                 fill
                 sizes="(min-width: 1024px) 420px, 320px"
                 className="object-cover"

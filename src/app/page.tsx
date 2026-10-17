@@ -54,7 +54,7 @@ export default function Home() {
                 <span className="material-symbols-outlined !text-[18px] text-slate-400 transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span>
               </a>
               <div className="hidden lg:block relative mt-12 w-44 aspect-square rounded-3xl overflow-hidden ring-1 ring-white/20 shadow-2xl anim-float">
-                <Image src="/images/nik-portrait.webp" alt="Nik 마스코트" fill sizes="176px" className="object-cover" />
+                <Image src="/images/brand-profile.png" alt="닉아저씨 마스코트" fill sizes="176px" className="object-cover" />
               </div>
             </div>
 

@@ -1,32 +1,17 @@
 import Image from "next/image";
 import { SITE } from "@/data/site";
 
-// 유튜브 카드 그림: 영상 플레이어 + 마스코트 진행자 (벡터 일러스트)
+// 유튜브 카드: 채널 배너 이미지
 function YoutubeArt() {
   return (
-    <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#1a0b14] via-[#2a0f1c] to-ink">
-      <svg viewBox="0 0 320 200" className="absolute inset-0 w-full h-full" aria-hidden="true">
-        <defs>
-          <linearGradient id="yt-wave" x1="0" x2="1">
-            <stop offset="0" stopColor="#ff4d6d" stopOpacity="0" />
-            <stop offset=".5" stopColor="#ff4d6d" stopOpacity=".55" />
-            <stop offset="1" stopColor="#22d3ee" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <rect x="26" y="26" width="200" height="120" rx="14" fill="#ffffff" fillOpacity=".06" stroke="#ffffff" strokeOpacity=".15" />
-        <path d="M26 132 Q 76 108 126 128 T 226 118" fill="none" stroke="url(#yt-wave)" strokeWidth="3" />
-        <circle cx="126" cy="86" r="24" fill="#ff0033" />
-        <path d="M119 75 L137 86 L119 97 Z" fill="#fff" />
-        <rect x="26" y="158" width="200" height="4" rx="2" fill="#ffffff" fillOpacity=".12" />
-        <rect x="26" y="158" width="86" height="4" rx="2" fill="#ff0033" />
-        <circle cx="112" cy="160" r="5" fill="#ff0033" />
-        {[0, 1, 2].map((i) => (
-          <rect key={i} x="240" y={34 + i * 40} width="56" height="30" rx="7" fill="#ffffff" fillOpacity={0.05 + i * 0.02} stroke="#ffffff" strokeOpacity=".1" />
-        ))}
-      </svg>
-      <div className="absolute right-5 bottom-5 w-20 h-20 rounded-2xl overflow-hidden ring-2 ring-white/30 shadow-xl">
-        <Image src="/images/nik-portrait.webp" alt="" fill sizes="80px" className="object-cover object-top" />
-      </div>
+    <div className="relative aspect-[16/10] overflow-hidden bg-[#1f4a6e]">
+      <Image
+        src="/images/brand-banner.png"
+        alt="닉아저씨 유튜브 채널 배너: 교육행정 × AI 실무 이야기"
+        fill
+        sizes="(min-width: 768px) 560px, 100vw"
+        className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+      />
     </div>
   );
 }
