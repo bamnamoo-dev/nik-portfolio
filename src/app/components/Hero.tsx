@@ -1,63 +1,103 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SITE } from "@/data/site";
+import { SITE, TRUST_CHIPS } from "@/data/site";
+import Stats from "./Stats";
+
+const FLOAT_CHIPS = [
+  { label: "행정챗봇", icon: "smart_toy", pos: "top-6 -left-4 md:-left-10" },
+  { label: "계약나침반", icon: "explore", pos: "top-1/2 -right-3 md:-right-8" },
+  { label: "공사원가 검수", icon: "calculate", pos: "bottom-8 -left-2 md:-left-6" },
+];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-8 md:pt-16 pb-12 md:pb-20 px-6">
-      <div className="absolute inset-0 bg-[radial-gradient(#e2e2e2_1px,transparent_1px)] [background-size:32px_32px] opacity-50"></div>
-      <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-        <div className="text-center md:text-left order-2 md:order-1">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-cyan-50 border border-cyan-100 mb-5">
-            <span className="text-cyan-800 font-bold text-xs md:text-sm">교육행정직 · AI 업무 도구 개발·공유</span>
+    <section className="relative overflow-hidden bg-ink text-white pt-28 md:pt-36 pb-16 md:pb-20">
+      {/* 배경: 격자 + 번지는 빛 */}
+      <div className="absolute inset-0 grid-bg" aria-hidden="true"></div>
+      <div className="anim-glow absolute -top-40 -left-32 w-[520px] h-[520px] rounded-full bg-accent/20 blur-[120px]" aria-hidden="true"></div>
+      <div className="anim-glow absolute top-40 -right-40 w-[480px] h-[480px] rounded-full bg-sky-600/20 blur-[120px] [animation-delay:-7s]" aria-hidden="true"></div>
+
+      <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-10 items-center">
+        <div className="hero-in text-center lg:text-left">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs md:text-sm font-semibold text-slate-200 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent anim-pulse" aria-hidden="true"></span>
+            교육행정직 · AI 업무 도구 개발·공유
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-black text-[#002147] tracking-tight leading-tight mb-5">
+          <h1 className="text-[1.8rem] leading-[1.2] min-[400px]:text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.1rem] font-extrabold tracking-tight mb-6">
             교육행정 실무자가<br />
             AI로 직접 만들고 나누는<br />
-            <span className="bg-cyan-100 px-2">업무 도구</span>
+            <span className="bg-gradient-to-r from-accent via-sky-300 to-white bg-clip-text text-transparent">업무 도구</span>
           </h1>
-          <p className="text-base md:text-lg text-[#44474e] leading-relaxed mb-8">
+
+          <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
             교육행정직으로 일하며 AI 관련 행정업무 도구를 사용하고, 개발하고, 공유하고 있습니다.
             관련 도움이나 소통이 필요하시면 편하게 연락 주세요. 강의도 가능합니다.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-5">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
             <a
               href={SITE.portalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-center bg-[#002147] text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:-translate-y-0.5 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+              className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-accent text-ink font-bold py-4 px-7 shadow-[0_10px_40px_-10px_rgb(34_211_238/0.7)] hover:bg-white transition-colors"
             >
               AI-SEN 포털 둘러보기
+              <span className="material-symbols-outlined !text-[20px] transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" aria-hidden="true">arrow_outward</span>
             </a>
             <a
               href="#contact"
-              className="text-center bg-white border-2 border-[#002147] text-[#002147] font-bold py-3.5 px-6 rounded-2xl hover:-translate-y-0.5 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+              className="group inline-flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/5 font-bold py-4 px-7 hover:bg-white/10 transition-colors"
             >
               연락하기
+              <span className="material-symbols-outlined !text-[20px] transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span>
             </a>
           </div>
 
-          <div className="flex gap-6 text-sm font-bold text-[#44474e] justify-center md:justify-start">
-            <Link href="/card" className="underline underline-offset-4 hover:text-cyan-700">디지털 명함</Link>
-            <Link href="/profile" className="underline underline-offset-4 hover:text-cyan-700">1페이지 프로필</Link>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 justify-center lg:justify-start text-sm text-slate-400">
+            {TRUST_CHIPS.map((c) => (
+              <li key={c} className="flex items-center gap-1.5">
+                <span className="material-symbols-outlined !text-[16px] text-accent" aria-hidden="true">verified</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex gap-6 text-sm font-semibold text-slate-300 justify-center lg:justify-start mt-6">
+            <Link href="/card" className="underline underline-offset-4 decoration-white/30 hover:text-white">디지털 명함</Link>
+            <Link href="/profile" className="underline underline-offset-4 decoration-white/30 hover:text-white">1페이지 프로필</Link>
           </div>
         </div>
 
-        <div className="order-1 md:order-2 relative mx-auto w-56 sm:w-72 md:w-full max-w-md group">
-          <div className="absolute inset-0 bg-cyan-400 blur-[50px] opacity-20 group-hover:opacity-30 transition-opacity duration-1000"></div>
-          <div className="relative aspect-square rounded-[32px] overflow-hidden border-4 border-white shadow-2xl">
-            <Image
-              src="/images/nik-desk.webp"
-              alt="노트북과 태블릿을 들고 있는 Nik 마스코트"
-              fill
-              sizes="(min-width: 768px) 448px, 288px"
-              className="object-cover"
-              priority
-            />
+        <div className="relative mx-auto w-64 sm:w-80 lg:w-full max-w-[420px]">
+          <div className="anim-float relative">
+            <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-br from-accent/40 to-sky-600/10 blur-2xl" aria-hidden="true"></div>
+            <div className="relative aspect-square rounded-[36px] overflow-hidden ring-1 ring-white/20 shadow-2xl">
+              <Image
+                src="/images/nik-desk.webp"
+                alt="노트북과 태블릿을 들고 있는 Nik 마스코트"
+                fill
+                sizes="(min-width: 1024px) 420px, 320px"
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
+          {FLOAT_CHIPS.map((c) => (
+            <div
+              key={c.label}
+              aria-hidden="true"
+              className={`hidden sm:flex absolute ${c.pos} items-center gap-2 rounded-2xl border border-white/15 bg-ink-2/80 backdrop-blur-md px-3.5 py-2.5 text-sm font-semibold shadow-xl`}
+            >
+              <span className="material-symbols-outlined !text-[18px] text-accent">{c.icon}</span>
+              {c.label}
+            </div>
+          ))}
         </div>
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-6 mt-16 md:mt-20">
+        <Stats />
       </div>
     </section>
   );

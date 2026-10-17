@@ -1,32 +1,48 @@
+import Image from "next/image";
 import { VISIBLE_CREDENTIALS } from "@/data/credentials";
 import StatusBadge from "./StatusBadge";
 
 export default function Timeline() {
   return (
-    <section id="credentials" className="py-20 md:py-28 bg-white">
-      <div className="max-w-2xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <span className="text-cyan-700 font-bold text-sm">학습과 인증</span>
-          <h2 className="text-3xl md:text-5xl font-black text-[#000a1e] mt-3">이력·자격</h2>
+    <section id="credentials" className="bg-white py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="reveal mb-12">
+          <p className="text-sm font-bold text-accent-strong mb-3">학습과 인증</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">이력·자격</h2>
         </div>
 
-        <div className="bg-[#f9f9f9] rounded-3xl border border-black/5 p-7 md:p-10">
-        <ol className="relative border-l-2 border-cyan-200 ml-3 space-y-8">
-          {VISIBLE_CREDENTIALS.map((c) => (
-            <li key={c.title} className="pl-6 relative">
-              <span className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-cyan-600" aria-hidden="true"></span>
-              <div className="flex flex-wrap items-center gap-2 mb-1">
+        <ol className="grid md:grid-cols-3 gap-5">
+          {VISIBLE_CREDENTIALS.map((c, i) => (
+            <li
+              key={c.title}
+              className="reveal lift relative flex flex-col rounded-[28px] border border-black/[0.06] bg-paper p-7"
+            >
+              <div className="flex items-center justify-between mb-6 h-16">
                 <StatusBadge status={c.status} />
-                {c.date && <span className="text-sm text-[#44474e]">{c.date}</span>}
+                {c.badgeImage ? (
+                  <Image
+                    src={c.badgeImage}
+                    alt="Gemini Certified Educator"
+                    width={80}
+                    height={80}
+                    unoptimized
+                    className="-mt-3 -mr-2 rounded-2xl bg-white ring-1 ring-black/5 shadow-sm"
+                  />
+                ) : (
+                  <span className="text-5xl font-extrabold text-black/[0.06] leading-none tabular-nums" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                )}
               </div>
-              <h3 className="text-lg font-bold text-[#000a1e] leading-snug">{c.title}</h3>
-              {c.issuer && <p className="text-sm text-[#44474e]">{c.issuer}</p>}
+              <h3 className="text-lg font-extrabold tracking-tight leading-snug mb-2">{c.title}</h3>
+              {c.issuer && <p className="text-sm text-body">{c.issuer}</p>}
+              {c.date && <p className="text-sm text-body mt-auto pt-4">{c.date}</p>}
               {c.verifyUrl && (
                 <a
                   href={c.verifyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold text-cyan-800 underline underline-offset-2"
+                  className="text-sm font-bold text-accent-strong underline underline-offset-2 mt-2"
                 >
                   공식 인증 확인
                 </a>
@@ -34,7 +50,6 @@ export default function Timeline() {
             </li>
           ))}
         </ol>
-        </div>
       </div>
     </section>
   );

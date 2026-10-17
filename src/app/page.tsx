@@ -1,70 +1,64 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import ContactForm from "./components/ContactForm";
 import Image from "next/image";
+import ContactForm from "./components/ContactForm";
+import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import ToolMarquee from "./components/ToolMarquee";
 import WhatIDo from "./components/WhatIDo";
-import TrustBar from "./components/TrustBar";
-import Lectures from "./components/Lectures";
 import Solutions from "./components/Solutions";
 import Timeline from "./components/Timeline";
+import Lectures from "./components/Lectures";
 import Creative from "./components/Creative";
 import { SITE } from "@/data/site";
 
+// 실시간 지표를 10분마다 다시 받아옵니다.
+export const revalidate = 600;
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f9f9f9] text-[#1a1c1c] selection:bg-cyan-200">
-      {/* Navigation */}
-      <nav aria-label="주요 메뉴" className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-black/5">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <span className="material-symbols-outlined text-cyan-600 text-3xl" aria-hidden="true">science</span>
-            <span className="text-2xl font-black tracking-tighter text-[#000a1e]">Nik</span>
-          </a>
-          <div className="hidden md:flex gap-8 font-bold text-sm text-[#44474e]">
-            <a href="#about" className="hover:text-cyan-700 transition-colors">하는 일</a>
-            <a href="#solutions" className="hover:text-cyan-700 transition-colors">솔루션</a>
-            <a href="#credentials" className="hover:text-cyan-700 transition-colors">이력</a>
-            <a href="#lectures" className="hover:text-cyan-700 transition-colors">강의</a>
-            <a href="#creative" className="hover:text-cyan-700 transition-colors">기록</a>
-            <Link href="/card" className="hover:text-cyan-700 transition-colors">명함</Link>
-          </div>
-          <a href="#contact" className="bg-[#000a1e] text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:opacity-90 transition-all">
-            문의
-          </a>
-        </div>
-      </nav>
+    <div className="min-h-screen selection:bg-accent/30">
+      <Nav />
 
-      <main className="pt-16 overflow-x-hidden">
+      <main className="overflow-x-clip">
         <Hero />
-        <TrustBar />
+        <ToolMarquee />
         <WhatIDo />
         <Solutions />
         <Timeline />
         <Lectures />
         <Creative />
 
-        {/* Contact Section */}
-        <section id="contact" className="py-20 md:py-28 bg-[#f8f9fa]">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start text-left">
-              <div>
-                <span className="text-cyan-700 font-bold text-sm">문의</span>
-                <h2 className="text-3xl md:text-5xl font-black text-[#000a1e] mt-3 mb-6">도움이나 소통이 필요하시면 편하게 연락 주세요</h2>
-                <p className="text-lg text-[#44474e] mb-10 leading-relaxed">
-                  도구 사용 중 불편한 점, 건의, 협업 제안, 강의·연수 요청 모두 환영합니다. 남겨 주시면 확인 후 답변드리겠습니다.
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-cyan-700">
-                    <span className="material-symbols-outlined" aria-hidden="true">mail</span>
-                  </div>
-                  <a href={`mailto:${SITE.email}`} className="font-bold text-[#000a1e] hover:underline">{SITE.email}</a>
-                </div>
-                <div className="hidden lg:block relative mt-10 w-56 aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-xl">
-                  <Image src="/images/nik-portrait.webp" alt="Nik 마스코트" fill sizes="224px" className="object-cover" />
-                </div>
-              </div>
+        <section id="contact" className="relative overflow-hidden bg-ink text-white py-24 md:py-32">
+          <div className="absolute inset-0 grid-bg" aria-hidden="true"></div>
+          <div className="anim-glow absolute -bottom-40 -left-40 w-[520px] h-[520px] rounded-full bg-accent/15 blur-[120px]" aria-hidden="true"></div>
 
+          <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="reveal">
+              <p className="text-sm font-bold text-accent mb-3">연락하기</p>
+              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
+                도움이나 소통이 필요하시면 편하게 연락 주세요
+              </h2>
+              <p className="text-lg text-slate-300 leading-relaxed mb-10">
+                도구 사용 중 불편한 점, 건의, 협업 제안, 강의·연수 요청 모두 환영합니다. 남겨 주시면 확인 후 답변드리겠습니다.
+              </p>
+              {/* TODO: 응답 시간 안내 문구가 정해지면 여기에 한 줄 추가하세요. (예: "보통 ○일 안에 답변드립니다") */}
+              <a
+                href={`mailto:${SITE.email}`}
+                className="group inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 hover:bg-white/10 transition-colors"
+              >
+                <span className="grid place-items-center w-10 h-10 rounded-xl bg-accent/15 text-accent">
+                  <span className="material-symbols-outlined" aria-hidden="true">mail</span>
+                </span>
+                <span className="font-bold">{SITE.email}</span>
+                <span className="material-symbols-outlined !text-[18px] text-slate-400 transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span>
+              </a>
+              <div className="hidden lg:block relative mt-12 w-44 aspect-square rounded-3xl overflow-hidden ring-1 ring-white/20 shadow-2xl anim-float">
+                <Image src="/images/nik-portrait.webp" alt="Nik 마스코트" fill sizes="176px" className="object-cover" />
+              </div>
+            </div>
+
+            <div className="reveal text-[#16181d]">
               <Suspense fallback={null}>
                 <ContactForm />
               </Suspense>
@@ -73,23 +67,27 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="py-16 bg-[#000a1e] text-white text-center">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-8">
-            <h2 className="text-3xl font-black tracking-tighter mb-3">Nik</h2>
-            <p className="text-slate-300 max-w-md mx-auto">교육행정 AI 업무혁신, 현직 실무자가 직접 만들고 운영합니다.</p>
+      <footer className="bg-[#060e1b] text-white">
+        <div className="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-[1fr_auto] gap-10 items-start">
+          <div>
+            <p className="flex items-center gap-2.5 mb-3">
+              <span className="grid place-items-center w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-sky-500 text-ink font-black text-sm" aria-hidden="true">N</span>
+              <span className="text-xl font-extrabold tracking-tight">Nik</span>
+            </p>
+            <p className="text-slate-300">교육행정 AI 업무혁신, 현직 실무자가 직접 만들고 운영합니다.</p>
           </div>
-          <div className="border-t border-white/10 pt-8 flex flex-col items-center gap-5">
-            <div className="flex gap-6 flex-wrap justify-center">
-              <a href={SITE.youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors">YouTube</a>
-              <a href={SITE.blogUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors">Blog</a>
-              <a href={SITE.portalUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors">AI-SEN</a>
-              <Link href="/card" className="text-slate-300 hover:text-white transition-colors">디지털 명함</Link>
-              <Link href="/profile" className="text-slate-300 hover:text-white transition-colors">프로필</Link>
-            </div>
-            <p className="text-slate-300 text-sm max-w-xl leading-relaxed">{SITE.disclaimerSite}</p>
-            <p className="text-slate-400 text-sm">© 2026 Nik. All rights reserved.</p>
+          <nav aria-label="바로가기" className="flex gap-x-6 gap-y-2 flex-wrap text-sm text-slate-300">
+            <a href={SITE.youtubeUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">YouTube</a>
+            <a href={SITE.blogUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">Blog</a>
+            <a href={SITE.portalUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">AI-SEN</a>
+            <Link href="/card" className="hover:text-white">디지털 명함</Link>
+            <Link href="/profile" className="hover:text-white">프로필</Link>
+          </nav>
+        </div>
+        <div className="border-t border-white/10">
+          <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:justify-between gap-2 text-xs text-slate-400">
+            <p>{SITE.disclaimerSite}</p>
+            <p>© 2026 Nik</p>
           </div>
         </div>
       </footer>

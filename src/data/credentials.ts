@@ -8,6 +8,7 @@ export interface Credential {
   issuer?: string;
   date?: string; // 화면에 표시되는 날짜 문구
   verifyUrl?: string; // 공식 인증 확인 링크 (직접 제공한 경우에만)
+  badgeImage?: string; // 공식 임베드 배지 이미지 주소 (이름이 없는 배지만 사용)
   show?: boolean; // false면 화면에서 숨김
 }
 
@@ -16,10 +17,12 @@ export const CREDENTIALS: Credential[] = [
     status: "취득",
     title: "Gemini 공인 교육 전문가 (Gemini Certified Educator)",
     issuer: "Google for Education",
-    // TODO: 발급일/만료일 확정 후 date에 입력하세요. 비어 있으면 날짜는 표시되지 않습니다.
-    date: "",
-    // TODO: 공식 인증 확인 링크가 있으면 verifyUrl에 입력하세요.
+    // 인증서 기준: 발급 2026-04-10, 만료 2029-04-10
+    date: "2026.04.10 취득 · 2029.04.10까지 유효",
+    // 인증 페이지는 실명이 보이므로 링크하지 않습니다. 걸려면 verifyUrl에 주소를 넣으세요.
     verifyUrl: "",
+    // Google for Education 공식 임베드 배지 (Accredible)
+    badgeImage: "https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/196230179",
   },
   {
     status: "예정",

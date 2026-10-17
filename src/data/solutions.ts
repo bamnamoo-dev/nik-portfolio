@@ -41,7 +41,15 @@ export const FEATURED_SOLUTIONS: Solution[] = [
   },
 ];
 
-// 접이식/"전체 도구 보기" 영역. aisen.store 홈 목록 기준.
+// AI-SEN 포털에 게시된 16종 도구 이름 (aisen.store 홈 목록 기준). 흐르는 띠에 사용합니다.
+export const ALL_TOOL_NAMES = [
+  "행정챗봇", "행정서고", "출장여비", "에듀파인 따라하기",
+  "계약", "공사원가", "학교회계", "예산정산",
+  "엑셀수합", "엑셀분리", "급여식대", "학생진급",
+  "기안문", "지출바인더", "교실배치도", "시설대관",
+] as const;
+
+// 전체 도구 카드 영역. aisen.store 홈 목록 기준.
 export const OTHER_TOOLS: { name: string; summary: string }[] = [
   { name: "행정서고", summary: "공식 지침서 102권 열람" },
   { name: "학교회계", summary: "세부사업·추경 집행 대시보드 (베타)" },

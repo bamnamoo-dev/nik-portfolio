@@ -31,7 +31,7 @@ export default function PrintCardPage() {
           <li>점선은 재단선(90×50mm)입니다. 바깥 3mm는 도련(bleed)이며, 배경·색은 이 영역까지 채워서 인쇄소에 전달하세요.</li>
           <li>글자와 QR은 재단선 안쪽 3mm 이상 안전 여백에 두었습니다.</li>
           <li>인쇄 시 용지 크기 96×56mm, 여백 없음, 배율 100%로 설정하세요. 인쇄소 제출은 PDF로 저장하는 방식을 권장합니다.</li>
-          <li>앞면 소속은 학교명을 제외했습니다. 실명·학교명 노출 여부는 직접 정한 뒤 site.ts에서 수정하세요.</li>
+          <li>앞면 소속은 기관명(서울특별시교육청)까지만 표기하며, 이름은 &lsquo;Nik&rsquo;로 표시합니다.</li>
         </ul>
         <button
           type="button"
@@ -45,13 +45,13 @@ export default function PrintCardPage() {
       {/* 앞면 */}
       <section className="biz-sheet" aria-label="명함 앞면">
         <p className="no-print text-xs text-[#44474e] mb-1">앞면</p>
-        <div className="biz shadow-lg" style={{ background: "#002147", color: "#fff" }}>
+        <div className="biz shadow-lg" style={{ background: "#0a1628", color: "#fff" }}>
           <div className="trim" />
           <div className="safe flex flex-col justify-between">
             <p style={{ fontSize: "7pt", opacity: 0.85 }}>{SITE.affiliation}</p>
             <div>
-              <p style={{ fontSize: "16pt", fontWeight: 900, lineHeight: 1.1 }}>{name}</p>
-              <p style={{ fontSize: "8pt", marginTop: "1mm", color: "#67e8f9" }}>교육행정 AI 업무혁신</p>
+              <p style={{ fontSize: "17pt", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>{name}</p>
+              <p style={{ fontSize: "8pt", marginTop: "1mm", color: "#22d3ee" }}>교육행정 AI 업무혁신</p>
             </div>
             <div style={{ fontSize: "7pt", lineHeight: 1.5 }}>
               <p>{SITE.email}</p>

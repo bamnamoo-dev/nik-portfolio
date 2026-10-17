@@ -23,7 +23,7 @@ const printCss = `
 }
 `;
 
-const h2 = "text-[12.5pt] font-black text-[#002147] border-b border-[#002147]/20 pb-1 mb-3";
+const h2 = "text-[12.5pt] font-extrabold tracking-tight text-[#0a1628] border-b-2 border-[#22d3ee] pb-1 mb-3";
 
 export default function ProfilePage() {
   const name = SITE.displayName || "Nik";
@@ -39,11 +39,12 @@ export default function ProfilePage() {
       <article className="sheet bg-white mx-auto shadow-lg w-full max-w-[210mm] min-h-[297mm] p-[12mm] text-[#1a1c1c] text-[10.5pt] leading-relaxed">
         <header className="flex items-center gap-5 mb-7">
           <div className="relative w-20 h-20 rounded-xl overflow-hidden border border-black/10 shrink-0">
-            <Image src="/bear_nik.png" alt="Nik 마스코트" fill sizes="80px" className="object-cover" />
+            <Image src="/images/nik-desk.webp" alt="Nik 마스코트" fill sizes="80px" className="object-cover" />
           </div>
           <div>
-            <h1 className="text-[24pt] font-black text-[#002147] leading-none">{name}</h1>
-            <p className="text-[11.5pt] font-bold text-[#44474e] mt-1">{SITE.tagline}</p>
+            <p className="text-[9.5pt] font-semibold text-[#44474e] mb-1">{SITE.affiliation} · {SITE.role}</p>
+            <h1 className="text-[24pt] font-extrabold tracking-tight text-[#0a1628] leading-none">{name}</h1>
+            <p className="text-[11.5pt] font-bold text-[#0e7490] mt-1">{SITE.tagline}</p>
             <p className="mt-1">교육행정직으로 일하며 AI 관련 행정업무 도구를 사용하고, 개발하고, 공유하고 있습니다. 관련 도움이나 소통이 필요하시면 연락 주세요. 강의도 가능합니다.</p>
           </div>
         </header>
