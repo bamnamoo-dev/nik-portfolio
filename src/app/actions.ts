@@ -1,7 +1,9 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { headers } from "next/headers";
 import { INQUIRY_TYPES } from "@/data/inquiry";
+import { clientKey, isRateLimited, looksLikeBot } from "@/lib/formGuard";
 
 // 폼 값을 문자열로 읽고 길이를 제한합니다. 제목 줄 주입을 막기 위해 줄바꿈은 제거할 수 있습니다.
 function field(formData: FormData, key: string, max: number, singleLine = true) {
@@ -12,6 +14,15 @@ function field(formData: FormData, key: string, max: number, singleLine = true) 
 }
 
 export async function sendEmail(formData: FormData) {
+  // 스팸 방지: 봇에게는 성공처럼 응답하되 메일은 보내지 않습니다.
+  if (looksLikeBot({ honeypot: field(formData, "website", 200), startedAt: field(formData, "startedAt", 20) })) {
+    return { success: true };
+  }
+  const h = await headers();
+  if (isRateLimited(clientKey(h.get("x-forwarded-for"), h.get("x-real-ip")))) {
+    return { success: false, error: "짧은 시간에 너무 많이 보냈습니다. 잠시 후 다시 시도해주세요." };
+  }
+
   const name = field(formData, "name", 50);
   const phone = field(formData, "phone", 30);
   const email = field(formData, "email", 100);

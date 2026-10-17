@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { sendEmail } from "../actions";
 import { INQUIRY_TYPES, type InquiryType } from "@/data/inquiry";
@@ -18,6 +18,12 @@ export default function ContactForm() {
   const [type, setType] = useState<InquiryType>(fromLecture ? "강의·특강 요청" : INQUIRY_TYPES[0]);
   const [lectureTopic, setLectureTopic] = useState(fromLecture ? (params.get("topic") ?? "").slice(0, 200) : "");
 
+  // 스팸 방지: 폼이 열린 시각을 기록합니다. (사람은 3초 안에 작성하기 어렵습니다)
+  const startedAt = useRef(0);
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
@@ -25,11 +31,13 @@ export default function ContactForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    formData.set("startedAt", String(startedAt.current));
     const result = await sendEmail(formData);
 
     if (result.success) {
       setStatus("success");
       form.reset();
+      startedAt.current = Date.now();
       setType(INQUIRY_TYPES[0]);
       setLectureTopic("");
     } else {
@@ -41,6 +49,11 @@ export default function ContactForm() {
   return (
     <div className="bg-white p-6 sm:p-10 md:p-12 rounded-[28px] sm:rounded-[40px] shadow-xl border border-black/5">
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* 허니팟: 사람에게는 보이지 않고, 봇이 채우면 차단됩니다. */}
+        <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+          <label htmlFor="website">웹사이트</label>
+          <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+        </div>
         <div className="space-y-2">
           <label htmlFor="inquiryType" className={labelCls}>문의 유형</label>
           <select
