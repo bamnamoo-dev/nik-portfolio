@@ -42,10 +42,13 @@ export default function Home() {
               <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
                 도움이나 소통이 필요하시면 편하게 연락 주세요
               </h2>
-              <p className="text-lg text-slate-300 leading-relaxed mb-10">
+              <p className="text-lg text-slate-300 leading-relaxed mb-6">
                 도구 사용 중 불편한 점, 건의, 협업 제안, 강의·연수 요청 모두 환영합니다. 남겨 주시면 확인 후 답변드리겠습니다.
               </p>
-              {/* TODO: 응답 시간 안내 문구가 정해지면 여기에 한 줄 추가하세요. (예: "보통 ○일 안에 답변드립니다") */}
+              <p className="self-start inline-flex items-center gap-2 mb-4 rounded-full bg-accent/10 border border-accent/30 px-4 py-1.5 text-sm font-bold text-accent">
+                <span className="material-symbols-outlined !text-[18px]" aria-hidden="true">schedule</span>
+                영업일 기준 1일 이내에 답변드립니다
+              </p>
               <a
                 href={`mailto:${SITE.email}`}
                 className="group self-start inline-flex lg:w-72 items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 hover:bg-white/10 transition-colors"

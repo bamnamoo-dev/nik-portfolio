@@ -148,7 +148,7 @@ export default function ContactForm() {
 
         {status === "success" && (
           <div role="status" className="p-4 bg-green-50 text-green-700 rounded-2xl text-sm font-medium">
-            메시지가 성공적으로 전송되었습니다! 곧 연락드리겠습니다.
+            메시지가 성공적으로 전송되었습니다! 영업일 기준 1일 이내에 답변드리겠습니다.
           </div>
         )}
 
