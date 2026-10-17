@@ -3,12 +3,6 @@ import Link from "next/link";
 import { SITE, TRUST_CHIPS } from "@/data/site";
 import Stats from "./Stats";
 
-const FLOAT_CHIPS = [
-  { label: "행정챗봇", icon: "smart_toy", pos: "top-6 -left-4 md:-left-10" },
-  { label: "계약나침반", icon: "explore", pos: "top-1/2 -right-3 md:-right-8" },
-  { label: "공사원가 검수", icon: "calculate", pos: "bottom-8 -left-2 md:-left-6" },
-];
-
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-ink text-white pt-28 md:pt-36 pb-16 md:pb-20">
@@ -83,16 +77,6 @@ export default function Hero() {
               />
             </div>
           </div>
-          {FLOAT_CHIPS.map((c) => (
-            <div
-              key={c.label}
-              aria-hidden="true"
-              className={`hidden sm:flex absolute ${c.pos} items-center gap-2 rounded-2xl border border-white/15 bg-ink-2/80 backdrop-blur-md px-3.5 py-2.5 text-sm font-semibold shadow-xl`}
-            >
-              <span className="material-symbols-outlined !text-[18px] text-accent">{c.icon}</span>
-              {c.label}
-            </div>
-          ))}
         </div>
       </div>
 
