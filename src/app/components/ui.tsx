@@ -2,6 +2,23 @@ import type { ReactNode } from "react";
 
 // 공통 부품: 섹션 제목, 꺾쇠 링크. 디자인을 바꿀 때 여기부터 손보면 전체에 반영됩니다.
 
+// 사이트에서 쓰는 아이콘 (선 굵기 1.8의 단순한 SVG). 외부 아이콘 폰트를 받지 않습니다.
+const ICON_PATHS = {
+  menu: "M4 8h16M4 16h16",
+  close: "M6 6l12 12M18 6L6 18",
+  mail: "M4 6h16v12H4zM4 7l8 6 8-6",
+  call: "M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z",
+  personAdd: "M9.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 20a6.5 6.5 0 0 1 13 0M19 8v6M16 11h6",
+} as const;
+
+export function Icon({ name, className = "w-5 h-5" }: { name: keyof typeof ICON_PATHS; className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
+      <path d={ICON_PATHS[name]} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Chevron({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 8 14" aria-hidden="true" className={`inline-block w-[0.42em] h-[0.75em] ${className}`}>

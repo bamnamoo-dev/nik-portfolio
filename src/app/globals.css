@@ -45,23 +45,6 @@
   }
 }
 
-/* Material Symbols */
-.material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
 /* ───────── 움직임 ─────────
    스크롤하면 살짝 떠오르는 효과만 씁니다. '동작 줄이기' 설정에서는 꺼집니다.
    스크롤 연동은 지원 브라우저(Chrome·Edge)에서만 켜지고, 그 외에는 그냥 보입니다. */

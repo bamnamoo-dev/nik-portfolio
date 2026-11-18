@@ -1,6 +1,7 @@
 "use client";
 
 import { SITE } from "@/data/site";
+import { Icon } from "./ui";
 
 function esc(s: string) {
   return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
@@ -36,7 +37,7 @@ export default function VCardButton({ className = "" }: { className?: string }) 
 
   return (
     <button type="button" onClick={download} className={className}>
-      <span className="material-symbols-outlined" aria-hidden="true">person_add</span>
+      <Icon name="personAdd" />
       연락처 저장
     </button>
   );

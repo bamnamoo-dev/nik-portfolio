@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
+import { Icon } from "./ui";
 
 interface MobileMenuProps {
   links: { href: string; label: string }[];
@@ -32,7 +33,7 @@ export default function MobileMenu({ links, pages }: MobileMenuProps) {
         onClick={() => setOpen((v) => !v)}
         className="grid place-items-center w-11 h-11 text-ink"
       >
-        <span className="material-symbols-outlined !text-[22px]" aria-hidden="true">{open ? "close" : "menu"}</span>
+        <Icon name={open ? "close" : "menu"} className="w-6 h-6" />
       </button>
 
       {open && (

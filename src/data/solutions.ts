@@ -5,7 +5,6 @@ export interface Solution {
   name: string;
   summary: string;
   url: string;
-  icon: string; // Material Symbols 이름
   image: string; // public/images 안의 화면 캡처
   imageAlt: string;
 }
@@ -17,7 +16,6 @@ export const FEATURED_SOLUTIONS: Solution[] = [
     name: "AI-SEN 행정챗봇 & 출장여비",
     summary: "지침서·법령 근거로 답하는 3-Tier 챗봇과 관내·관외·해외 출장여비 산출",
     url: SITE.chatbotUrl,
-    icon: "smart_toy",
     image: "/images/shot-chatbot.webp",
     imageAlt: "AI-SEN 행정챗봇 화면",
   },
@@ -26,7 +24,6 @@ export const FEATURED_SOLUTIONS: Solution[] = [
     name: "서울교육 계약나침반",
     summary: "2026 지침 기준 계약방법 판단과 구비서류 안내",
     url: `${SITE.portalUrl}/tools/contract`,
-    icon: "explore",
     image: "/images/shot-contract.webp",
     imageAlt: "서울교육 계약나침반 화면",
   },
@@ -35,21 +32,12 @@ export const FEATURED_SOLUTIONS: Solution[] = [
     name: "공사원가 스마트 검수",
     summary: "조달청 고시 제비율 기준 역산 검증 및 검수 보고서 출력",
     url: `${SITE.portalUrl}/tools/cost-audit`,
-    icon: "calculate",
     image: "/images/shot-cost-audit.webp",
     imageAlt: "공사원가 스마트 검수 화면",
   },
 ];
 
-// AI-SEN 포털에 게시된 16종 도구 이름 (aisen.store 홈 목록 기준). 흐르는 띠에 사용합니다.
-export const ALL_TOOL_NAMES = [
-  "행정챗봇", "행정서고", "출장여비", "에듀파인 따라하기",
-  "계약", "공사원가", "학교회계", "예산정산",
-  "엑셀수합", "엑셀분리", "급여식대", "학생진급",
-  "기안문", "지출바인더", "교실배치도", "시설대관",
-] as const;
-
-// 전체 도구 카드 영역. aisen.store 홈 목록 기준.
+// "그 밖의 업무 도구" 목록. aisen.store 홈 목록 기준 (대표 솔루션 3개 + 아래 12개 = 16종, 출장여비는 챗봇에 포함).
 export const OTHER_TOOLS: { name: string; summary: string }[] = [
   { name: "행정서고", summary: "공식 지침서 102권 열람" },
   { name: "학교회계", summary: "세부사업·추경 집행 대시보드 (베타)" },

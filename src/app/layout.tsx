@@ -21,9 +21,6 @@ export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 
-// 사이트에서 쓰는 아이콘만 받아옵니다 (알파벳순 필수). 새 아이콘을 쓰면 여기에 추가하세요.
-const ICONS = ["call", "close", "mail", "menu", "person_add"].join(",");
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,10 +34,6 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href={`https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=${ICONS}&display=block`}
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>

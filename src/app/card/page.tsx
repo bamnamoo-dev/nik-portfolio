@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import QrCode from "../components/QrCode";
 import VCardButton from "../components/VCardButton";
-import { Chevron } from "../components/ui";
+import { Chevron, Icon } from "../components/ui";
 import { SITE } from "@/data/site";
 import { FEATURED_SOLUTIONS } from "@/data/solutions";
 
@@ -35,11 +35,11 @@ export default function CardPage() {
           <div className="grid grid-cols-2 gap-2">
             {SITE.phone && (
               <a href={`tel:${SITE.phone}`} className={`${btn} bg-paper text-ink hover:bg-[#e8e8ed]`}>
-                <span className="material-symbols-outlined !text-[20px]" aria-hidden="true">call</span>전화
+                <Icon name="call" />전화
               </a>
             )}
             <a href={`mailto:${SITE.email}`} className={`${btn} bg-paper text-ink hover:bg-[#e8e8ed]`}>
-              <span className="material-symbols-outlined !text-[20px]" aria-hidden="true">mail</span>이메일
+              <Icon name="mail" />이메일
             </a>
             <VCardButton className={`${btn} bg-accent text-white hover:bg-[#0077ed] ${SITE.phone ? "col-span-2" : ""}`} />
           </div>
