@@ -28,14 +28,17 @@ export default function Timeline() {
                 )}
               </div>
               {c.badgeImage && (
-                <Image
-                  src={c.badgeImage}
-                  alt="Gemini Certified Educator 배지"
-                  width={140}
-                  height={140}
-                  unoptimized
-                  className="shrink-0 w-24 h-24 md:w-[140px] md:h-[140px] -my-4 md:-my-6"
-                />
+                // 원본(200px)은 바깥 여백이 넓어서, 확대 후 가장자리를 잘라 배지 그림만 크게 보이게 합니다.
+                <div className="shrink-0 w-28 h-28 md:w-40 md:h-40 -my-4 md:-my-6 overflow-hidden">
+                  <Image
+                    src={c.badgeImage}
+                    alt="Gemini Certified Educator 배지"
+                    width={200}
+                    height={200}
+                    unoptimized
+                    className="w-full h-full scale-[1.45]"
+                  />
+                </div>
               )}
             </li>
           ))}
