@@ -25,9 +25,10 @@ export const CREDENTIALS: Credential[] = [
     badgeImage: "https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/196230179",
   },
   {
-    status: "예정",
+    status: "취득",
     title: "행정안전부 AI 챔피언 블루 인증",
-    date: "2026.10.28 시험",
+    // 2026.10.28 시험 → 2026.11 인증 통보, 인증서 발급 예정일 2026-11-20
+    date: "2026.11 인증 취득",
   },
   {
     status: "진행 중",
