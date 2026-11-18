@@ -51,7 +51,7 @@ export default function QrCode({
         <button
           type="button"
           onClick={download}
-          className="text-sm font-bold text-cyan-800 underline underline-offset-2 print:hidden focus-visible:outline-2 focus-visible:outline-cyan-600"
+          className="text-sm text-accent-strong hover:underline print:hidden"
         >
           QR 코드 SVG 다운로드
         </button>

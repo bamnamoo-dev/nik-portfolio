@@ -6,8 +6,8 @@ import { sendEmail } from "../actions";
 import { INQUIRY_TYPES, type InquiryType } from "@/data/inquiry";
 
 const inputCls =
-  "w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-cyan-500 transition-all outline-none";
-const labelCls = "text-sm font-bold text-[#000a1e] ml-1";
+  "w-full px-4 py-3.5 bg-white border border-line rounded-xl text-[17px] placeholder:text-[#aeaeb2] focus:border-accent focus:ring-4 focus:ring-accent/15 transition-shadow outline-none";
+const labelCls = "text-sm font-medium text-ink ml-1";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -47,7 +47,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-white p-6 sm:p-10 md:p-12 rounded-[28px] sm:rounded-[40px] shadow-xl border border-black/5">
+    <div className="bg-paper p-6 sm:p-10 md:p-12 rounded-3xl">
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* 허니팟: 사람에게는 보이지 않고, 봇이 채우면 차단됩니다. */}
         <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
@@ -72,7 +72,7 @@ export default function ContactForm() {
 
         {type === "강의·특강 요청" && (
           <div className="space-y-2">
-            <label htmlFor="lectureTopic" className={labelCls}>희망 강의 <span className="font-normal text-[#44474e]">(선택)</span></label>
+            <label htmlFor="lectureTopic" className={labelCls}>희망 강의 <span className="font-normal text-body">(선택)</span></label>
             <input
               type="text"
               id="lectureTopic"
@@ -103,18 +103,18 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="organization" className={labelCls}>소속 기관 <span className="font-normal text-[#44474e]">(선택)</span></label>
+          <label htmlFor="organization" className={labelCls}>소속 기관 <span className="font-normal text-body">(선택)</span></label>
           <input type="text" id="organization" name="organization" placeholder="예: ○○교육지원청" maxLength={100} className={inputCls} />
         </div>
 
         {type === "강의·특강 요청" && (
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="desiredDate" className={labelCls}>희망 일정 <span className="font-normal text-[#44474e]">(선택)</span></label>
+              <label htmlFor="desiredDate" className={labelCls}>희망 일정 <span className="font-normal text-body">(선택)</span></label>
               <input type="text" id="desiredDate" name="desiredDate" placeholder="예: 11월 중순 오후" maxLength={100} className={inputCls} />
             </div>
             <div className="space-y-2">
-              <label htmlFor="headcount" className={labelCls}>예상 인원 <span className="font-normal text-[#44474e]">(선택)</span></label>
+              <label htmlFor="headcount" className={labelCls}>예상 인원 <span className="font-normal text-body">(선택)</span></label>
               <input type="text" id="headcount" name="headcount" inputMode="numeric" placeholder="예: 30명" maxLength={30} className={inputCls} />
             </div>
           </div>
@@ -138,22 +138,22 @@ export default function ContactForm() {
             type="checkbox"
             id="privacy"
             name="privacy"
-            className="mt-1 w-4 h-4 text-cyan-600 bg-slate-50 border-none rounded focus:ring-cyan-500"
+            className="mt-1 w-4 h-4 accent-accent"
             required
           />
-          <label htmlFor="privacy" className="text-xs text-[#44474e] leading-relaxed cursor-pointer">
+          <label htmlFor="privacy" className="text-xs text-body leading-relaxed cursor-pointer">
             개인정보 수집 및 이용에 동의합니다. (수집 항목: 성함, 연락처, 이메일, 소속 기관·희망 일정·예상 인원(입력한 경우), 문의 내용 / 문의 응대 및 상담 목적)
           </label>
         </div>
 
         {status === "success" && (
-          <div role="status" className="p-4 bg-green-50 text-green-700 rounded-2xl text-sm font-medium">
+          <div role="status" className="p-4 bg-[#e8f8ec] text-[#1b7f3b] rounded-xl text-sm font-medium">
             메시지가 성공적으로 전송되었습니다! 영업일 기준 1일 이내에 답변드리겠습니다.
           </div>
         )}
 
         {status === "error" && (
-          <div role="alert" className="p-4 bg-red-50 text-red-700 rounded-2xl text-sm font-medium">
+          <div role="alert" className="p-4 bg-[#fdecec] text-[#c4291c] rounded-xl text-sm font-medium">
             {errorMessage}
           </div>
         )}
@@ -161,7 +161,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full py-5 bg-[#000a1e] text-white rounded-2xl font-bold text-lg hover:bg-cyan-600 transition-all shadow-lg hover:shadow-cyan-600/20 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 bg-accent text-white rounded-full font-medium text-[17px] hover:bg-[#0077ed] transition-colors active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? "발송 중..." : "메시지 보내기"}
         </button>

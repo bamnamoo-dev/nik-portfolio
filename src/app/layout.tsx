@@ -18,14 +18,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a1628",
+  themeColor: "#ffffff",
 };
 
 // 사이트에서 쓰는 아이콘만 받아옵니다 (알파벳순 필수). 새 아이콘을 쓰면 여기에 추가하세요.
-const ICONS = [
-  "apps", "arrow_forward", "arrow_outward", "build", "calculate", "call", "close", "edit_note", "explore",
-  "mail", "menu", "person_add", "play_arrow", "schedule", "sensors", "share", "smart_toy", "verified", "work",
-].join(",");
+const ICONS = ["call", "close", "mail", "menu", "person_add"].join(",");
 
 export default function RootLayout({
   children,

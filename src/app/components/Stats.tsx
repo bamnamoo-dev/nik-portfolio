@@ -13,28 +13,29 @@ export default async function Stats() {
   const items = [...STATIC_STATS, ...liveItems];
 
   return (
-    <div>
-      <dl className={`grid grid-cols-2 ${items.length > 2 ? "lg:grid-cols-4" : ""} gap-px rounded-3xl overflow-hidden border border-white/10 bg-white/10`}>
+    <div className="reveal">
+      <dl className={`grid grid-cols-2 ${items.length > 2 ? "lg:grid-cols-4" : ""} gap-y-10 gap-x-6 border-t border-line pt-10`}>
         {items.map((s, i) => (
-          <div key={s.label} className="bg-ink/90 backdrop-blur px-5 py-6 md:px-7 md:py-7">
-            <dt className="text-xs md:text-sm text-slate-400 mb-2 flex items-center gap-1.5">
+          // 숫자를 위에 보이도록 화면에서만 순서를 뒤집습니다 (dl 규칙상 dt가 먼저).
+          <div key={s.label} className="flex flex-col-reverse text-center">
+            <dt className="text-sm text-body mt-2 flex items-center justify-center gap-1.5">
               {i >= STATIC_STATS.length && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 text-emerald-300 px-2 py-0.5 text-[10px] font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 anim-pulse" aria-hidden="true"></span>
-                  실시간
-                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#30d158] anim-pulse" aria-hidden="true"></span>
               )}
               {s.label}
             </dt>
-            <dd className="text-3xl md:text-4xl font-extrabold tracking-tight tabular-nums">
+            <dd className="text-4xl md:text-5xl font-semibold tracking-tight tabular-nums">
               {s.value}
-              <span className="text-lg md:text-xl font-bold text-slate-400 ml-0.5">{s.unit}</span>
+              <span className="text-xl md:text-2xl font-medium text-body ml-0.5">{s.unit}</span>
             </dd>
           </div>
         ))}
       </dl>
       {liveItems.length > 0 && (
-        <p className="text-[11px] text-slate-500 mt-3 text-right">실시간 지표: AI-SEN 집계 기준, 10분 간격 갱신</p>
+        <p className="text-xs text-body/80 mt-8 text-center">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#30d158] mr-1.5 align-middle" aria-hidden="true"></span>
+          실시간 지표 · AI-SEN 집계 기준, 10분 간격 갱신
+        </p>
       )}
     </div>
   );

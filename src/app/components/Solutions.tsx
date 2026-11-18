@@ -1,108 +1,76 @@
 import Image from "next/image";
-import { FEATURED_SOLUTIONS, OTHER_TOOLS } from "@/data/solutions";
+import { FEATURED_SOLUTIONS, OTHER_TOOLS, type Solution } from "@/data/solutions";
 import { SITE } from "@/data/site";
+import { Chevron, ChevronLink, SectionHeading } from "./ui";
+
+// 애플 제품 타일처럼: 가운데 정렬 제목 + 설명 + 파란 링크, 아래에 큰 화면 캡처
+function Tile({ s, large = false }: { s: Solution; large?: boolean }) {
+  return (
+    <a
+      href={s.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`reveal group flex flex-col rounded-3xl bg-paper overflow-hidden text-center ${large ? "md:col-span-2" : ""}`}
+    >
+      <div className={`px-6 ${large ? "pt-12 md:pt-16" : "pt-10 md:pt-12"}`}>
+        <h3 className={`font-semibold tracking-tight ${large ? "text-3xl md:text-5xl" : "text-2xl md:text-3xl"}`}>{s.name}</h3>
+        <p className={`text-body mt-3 mx-auto max-w-xl ${large ? "text-lg md:text-xl" : "text-base md:text-lg"}`}>{s.summary}</p>
+        <span className="inline-flex items-center gap-1.5 mt-4 text-accent-strong text-[17px] group-hover:underline underline-offset-4">
+          열어 보기 <Chevron />
+          <span className="sr-only">(새 창)</span>
+        </span>
+      </div>
+      <div
+        className={`relative mt-10 mx-auto w-[88%] rounded-t-xl overflow-hidden ring-1 ring-black/[0.06] shadow-[0_20px_50px_-20px_rgb(0_0_0/0.25)] ${
+          large ? "aspect-[935/460] max-w-4xl" : "aspect-[16/9]"
+        }`}
+      >
+        <Image
+          src={s.image}
+          alt={s.imageAlt}
+          fill
+          sizes={large ? "(min-width: 1024px) 900px, 90vw" : "(min-width: 768px) 440px, 90vw"}
+          className="tile-img object-cover object-top"
+        />
+      </div>
+    </a>
+  );
+}
 
 export default function Solutions() {
   const [main, ...rest] = FEATURED_SOLUTIONS;
 
   return (
-    <section id="solutions" className="bg-paper py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-          <div>
-            <p className="text-sm font-bold text-accent-strong mb-3">AI-SEN 운영</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">대표 솔루션</h2>
-            <p className="text-lg text-body mt-3">동료 실무자들이 실제로 쓰는 도구입니다.</p>
-          </div>
-          <p className="text-sm text-body md:max-w-xs md:text-right">{SITE.disclaimerAi}</p>
-        </div>
+    <section id="solutions" className="bg-white py-24 md:py-36">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <SectionHeading eyebrow="AI-SEN 운영" title="대표 솔루션." sub="동료 실무자들이 실제로 쓰는 도구입니다." center />
 
-        <div className="grid lg:grid-cols-3 lg:grid-rows-2 gap-5">
-          {/* 큰 카드 */}
-          <a
-            href={main.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="reveal lift group lg:col-span-2 lg:row-span-2 flex flex-col rounded-[28px] bg-ink text-white overflow-hidden ring-1 ring-black/5"
-          >
-            <div className="p-7 md:p-9">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="grid place-items-center w-10 h-10 rounded-xl bg-accent/15 text-accent">
-                  <span className="material-symbols-outlined" aria-hidden="true">{main.icon}</span>
-                </span>
-                <h3 className="text-xl md:text-2xl font-extrabold tracking-tight">{main.name}</h3>
-              </div>
-              <p className="text-slate-300 leading-relaxed max-w-lg">{main.summary}</p>
-            </div>
-            <div className="relative mt-auto mx-7 md:mx-9 rounded-t-2xl overflow-hidden ring-1 ring-white/10 aspect-[935/520]">
-              <Image
-                src={main.image}
-                alt={main.imageAlt}
-                fill
-                sizes="(min-width: 1024px) 720px, 100vw"
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-            </div>
-            <span className="sr-only">새 창에서 열기</span>
-          </a>
-
+        <div className="grid md:grid-cols-2 gap-4">
+          <Tile s={main} large />
           {rest.map((s) => (
-            <a
-              key={s.id}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="reveal lift group flex flex-col rounded-[28px] bg-white border border-black/[0.06] overflow-hidden hover:border-accent-strong/40"
-            >
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2.5">
-                    <span className="material-symbols-outlined text-accent-strong" aria-hidden="true">{s.icon}</span>
-                    <h3 className="text-lg font-extrabold tracking-tight">{s.name}</h3>
-                  </div>
-                  <span className="material-symbols-outlined !text-[20px] text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-strong" aria-hidden="true">arrow_outward</span>
-                </div>
-                <p className="text-sm text-body leading-relaxed">{s.summary}</p>
-              </div>
-              <div className="relative mt-auto mx-6 rounded-t-xl overflow-hidden border border-b-0 border-black/[0.06] aspect-[16/7]">
-                <Image
-                  src={s.image}
-                  alt={s.imageAlt}
-                  fill
-                  sizes="(min-width: 1024px) 360px, 100vw"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-            </a>
+            <Tile key={s.id} s={s} />
           ))}
         </div>
 
-        {/* 전체 도구 */}
-        <div className="reveal mt-5 rounded-[28px] bg-white border border-black/[0.06] p-7 md:p-9 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10">
-          <div className="lg:w-64 shrink-0">
-            <p className="flex items-center gap-2 font-extrabold text-lg">
-              <span className="material-symbols-outlined text-accent-strong" aria-hidden="true">apps</span>
-              그 밖의 업무 도구
-            </p>
-            <a
-              href={SITE.portalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1 mt-2 text-sm font-bold text-accent-strong"
-            >
-              전체 16종 보기 (aisen.store)
-              <span className="material-symbols-outlined !text-[18px] transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_outward</span>
-            </a>
+        {/* 그 밖의 도구 */}
+        <div className="reveal mt-4 rounded-3xl bg-paper px-6 py-12 md:px-14 md:py-16">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">그 밖의 업무 도구</h3>
+            <ChevronLink href={SITE.portalUrl} external className="mt-3 text-[17px]">
+              전체 16종 보기
+            </ChevronLink>
           </div>
-          <ul className="grid flex-1 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6 max-w-4xl mx-auto">
             {OTHER_TOOLS.map((t) => (
-              <li key={t.name} className="rounded-xl bg-paper px-4 py-3 text-sm leading-snug">
-                <span className="block font-bold">{t.name}</span>
-                <span className="block text-body mt-0.5">{t.summary}</span>
+              <li key={t.name} className="border-t border-line pt-4">
+                <span className="block font-semibold">{t.name}</span>
+                <span className="block text-sm text-body mt-1">{t.summary}</span>
               </li>
             ))}
           </ul>
         </div>
+
+        <p className="text-xs text-body text-center mt-8">{SITE.disclaimerAi}</p>
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ interface MobileMenuProps {
   pages: { href: string; label: string }[];
 }
 
-// 768px 미만에서만 보이는 햄버거 메뉴. 링크를 누르거나 Esc를 누르면 닫힙니다.
+// 768px 미만에서만 보이는 메뉴. 링크를 누르거나 Esc를 누르면 닫힙니다.
 export default function MobileMenu({ links, pages }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -22,8 +22,6 @@ export default function MobileMenu({ links, pages }: MobileMenuProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const itemCls = "flex items-center justify-between min-h-12 px-3 rounded-xl text-base font-semibold text-slate-100 hover:bg-white/10 active:bg-white/10";
-
   return (
     <div className="md:hidden">
       <button
@@ -32,34 +30,36 @@ export default function MobileMenu({ links, pages }: MobileMenuProps) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="grid place-items-center w-11 h-11 rounded-full text-white hover:bg-white/10"
+        className="grid place-items-center w-11 h-11 text-ink"
       >
-        <span className="material-symbols-outlined" aria-hidden="true">{open ? "close" : "menu"}</span>
+        <span className="material-symbols-outlined !text-[22px]" aria-hidden="true">{open ? "close" : "menu"}</span>
       </button>
 
       {open && (
-        <div
-          id={panelId}
-          className="absolute top-full inset-x-0 border-t border-white/10 bg-ink shadow-2xl"
-        >
-          <nav aria-label="모바일 메뉴" className="max-w-6xl mx-auto px-4 py-3">
+        <div id={panelId} className="absolute top-full inset-x-0 h-[calc(100dvh-3rem)] bg-white">
+          <nav aria-label="모바일 메뉴" className="px-8 pt-6">
             <ul>
               {links.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} onClick={() => setOpen(false)} className={itemCls}>
+                  <a
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block py-3 text-2xl font-semibold tracking-tight text-ink"
+                  >
                     {l.label}
-                    <span className="material-symbols-outlined !text-[18px] text-slate-500" aria-hidden="true">arrow_forward</span>
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="mt-2 pt-2 border-t border-white/10 grid grid-cols-2 gap-2">
+            <ul className="mt-6 pt-6 border-t border-black/10">
               {pages.map((p) => (
-                <Link key={p.href} href={p.href} onClick={() => setOpen(false)} className="grid place-items-center min-h-12 rounded-xl border border-white/15 text-sm font-semibold text-slate-100 hover:bg-white/10">
-                  {p.label}
-                </Link>
+                <li key={p.href}>
+                  <Link href={p.href} onClick={() => setOpen(false)} className="block py-2.5 text-base text-body">
+                    {p.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </nav>
         </div>
       )}
