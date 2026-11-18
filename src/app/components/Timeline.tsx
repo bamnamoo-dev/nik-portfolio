@@ -7,7 +7,7 @@ export default function Timeline() {
   return (
     <section id="credentials" className="bg-paper py-24 md:py-36">
       <div className="max-w-5xl mx-auto px-6">
-        <SectionHeading eyebrow="학습과 인증" title="이력·자격." />
+        <SectionHeading eyebrow="학습과 인증" title="이력·자격" />
 
         <ol className="reveal rounded-3xl bg-white px-6 md:px-10">
           {VISIBLE_CREDENTIALS.map((c) => (

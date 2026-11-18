@@ -43,7 +43,7 @@ export default function Solutions() {
   return (
     <section id="solutions" className="bg-white py-24 md:py-36">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <SectionHeading eyebrow="AI-SEN 운영" title="대표 솔루션." sub="동료 실무자들이 실제로 쓰는 도구입니다." center />
+        <SectionHeading eyebrow="AI-SEN 운영" title="대표 솔루션" sub="동료 실무자들이 실제로 쓰는 도구입니다." center />
 
         <div className="grid md:grid-cols-2 gap-4">
           <Tile s={main} large />
