@@ -21,8 +21,8 @@ export const CREDENTIALS: Credential[] = [
     date: "2026.04.10 취득 · 2029.04.10까지 유효",
     // 인증 페이지는 실명이 보이므로 링크하지 않습니다. 걸려면 verifyUrl에 주소를 넣으세요.
     verifyUrl: "",
-    // Google for Education 공식 임베드 배지 (Accredible)
-    badgeImage: "https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/196230179",
+    // Google for Education 공식 배지 (Accredible에서 받은 400px 이미지)
+    badgeImage: "/images/badge-gemini-educator.png",
   },
   {
     status: "취득",
