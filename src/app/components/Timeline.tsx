@@ -31,10 +31,10 @@ export default function Timeline() {
                 <Image
                   src={c.badgeImage}
                   alt="Gemini Certified Educator 배지"
-                  width={72}
-                  height={72}
+                  width={140}
+                  height={140}
                   unoptimized
-                  className="shrink-0 rounded-2xl"
+                  className="shrink-0 w-24 h-24 md:w-[140px] md:h-[140px] -my-4 md:-my-6"
                 />
               )}
             </li>

@@ -32,7 +32,7 @@ export const CREDENTIALS: Credential[] = [
   },
   {
     status: "진행 중",
-    title: "서울동부교육지원청·노조 통합 AI 혁신가 과정 (30시간)",
+    title: "서울특별시교육청 및 통합노조 AI 혁신가 과정 (10주)",
     date: "~2026.12.11",
   },
   {
